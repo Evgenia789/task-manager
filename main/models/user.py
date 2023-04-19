@@ -13,6 +13,7 @@ class User(AbstractUser):
     role (str):A string representing the user's role.
     email (str): A string representing the user's email address.
     """
+
     class Roles(models.TextChoices):
         ADMIN = ("admin",)
         MANAGER = ("manager",)

@@ -40,7 +40,7 @@ class Task(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name="tasks",
+        related_name="authored_tasks",
         verbose_name="Author",
     )
     executor = models.ForeignKey(
@@ -48,11 +48,11 @@ class Task(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name="tasks",
+        related_name="executed_tasks",
         verbose_name="Executor",
     )
     tag = models.ManyToManyField(
-        Tag, blank=True, null=True, related_name="tasks", verbose_name="Tag"
+        Tag, blank=True, related_name="tasks", verbose_name="Tag"
     )
 
     class Meta:
