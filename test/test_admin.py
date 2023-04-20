@@ -7,6 +7,7 @@ from rest_framework.test import APIClient, APITestCase
 
 from main.models import Tag, Task, User
 
+
 class TestAdmin(APITestCase):
     client: APIClient
     admin: User
@@ -14,7 +15,9 @@ class TestAdmin(APITestCase):
     @classmethod
     def setUpTestData(cls) -> None:
         super().setUpTestData()
-        cls.admin = User.objects.create_superuser("test@test.ru", email=None, password=None)
+        cls.admin = User.objects.create_superuser(
+            "test@test.ru", email=None, password=None
+        )
         cls.client = APIClient()
         cls.client.force_login(cls.admin)
 
@@ -39,7 +42,9 @@ class TestAdmin(APITestCase):
         assert response.status_code == HTTPStatus.OK, response.content
         response = self.client.get(reverse("admin:main_user_add"))
         assert response.status_code == HTTPStatus.OK, response.content
-        response = self.client.get(reverse("admin:main_user_change", args=[self.admin.id]))
+        response = self.client.get(
+            reverse("admin:main_user_change", args=[self.admin.id])
+        )
         assert response.status_code == HTTPStatus.OK, response.content
 
     def test_user(self) -> None:
