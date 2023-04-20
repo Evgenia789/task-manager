@@ -7,11 +7,9 @@ class Tag(models.Model):
 
     Attributes:
         name (str): The name of the tag.
-        uniq_id (str): The unique tag ID.
     """
 
     name = models.CharField(max_length=200, null=True, blank=False)
-    uniq_id = models.CharField(max_length=200, null=True, blank=False)
 
     class Meta:
         verbose_name = "Tag"
