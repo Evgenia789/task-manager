@@ -12,7 +12,7 @@ task_manager_admin_site = TaskManagerAdminSite(name="Task manager admin")
 
 @admin.register(Tag, site=task_manager_admin_site)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ("name", "uniq_id")
+    list_display = ("name",)
     search_fields = ("name",)
 
 
