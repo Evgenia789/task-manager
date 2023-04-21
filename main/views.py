@@ -10,7 +10,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class TaskViewSet():
+class TaskViewSet(viewsets.ModelViewSet):
     """A viewset for CRUD operations on Task instance."""
     queryset = Task.objects.order_by("id")
     serializer_class = TaskSerializer
@@ -22,7 +22,7 @@ class TaskViewSet():
         serializer.save(author=self.request.user)
 
 
-class TagViewSet():
+class TagViewSet(viewsets.ModelViewSet):
     """A viewset for CRUD operations on Tag instance."""
     queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer
