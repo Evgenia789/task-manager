@@ -23,7 +23,7 @@ class TaskFilter(django_filters.FilterSet):
         to_field_name="name",
         queryset=Tag.objects.order_by("id"),
     )
-    status = django_filters.ChoiceFilter(choices=Task.status.choices)
+    status = django_filters.ChoiceFilter(choices=Task.Statuses.choices)
     author = django_filters.ModelChoiceFilter(queryset=User.objects.order_by("id"))
     executor = django_filters.ModelChoiceFilter(queryset=User.objects.order_by("id"))
 
