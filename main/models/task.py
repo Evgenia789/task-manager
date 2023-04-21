@@ -1,5 +1,6 @@
 from django.db import models
-from . import Tag, User
+from .tag import Tag
+from .user import User
 
 
 class Task(models.Model):
