@@ -25,20 +25,6 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ("id", "name")
 
-    def create(self, validated_data):
-        """
-        The `create` method for creating object.
-        """
-        return Tag.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        """
-        The `update` method for editing object.
-        """
-        instance.name = validated_data.get("name", instance.name)
-        instance.save()
-        return instance
-
 
 class TaskSerializer(serializers.ModelSerializerd):
     """The TaskSerializer serializer for the Task model."""
