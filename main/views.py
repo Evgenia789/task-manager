@@ -46,6 +46,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class TaskViewSet(viewsets.ModelViewSet):
+    """A viewset for CRUD operations on Task instance."""
+
     queryset = Task.objects.order_by("id")
     serializer_class = TaskSerializer
     filterset_class = TaskFilter
@@ -58,5 +60,8 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 
 class TagViewSet(viewsets.ModelViewSet):
+
+    """A viewset for CRUD operations on Tag instance."""
+
     queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer
