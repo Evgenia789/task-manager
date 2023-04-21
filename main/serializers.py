@@ -26,7 +26,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ("id", "name")
 
 
-class TaskSerializer(serializers.ModelSerializerd):
+class TaskSerializer(serializers.ModelSerializer):
     """The TaskSerializer serializer for the Task model."""
 
     status = serializers.MultipleChoiceField()
