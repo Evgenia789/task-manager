@@ -32,7 +32,7 @@ class TaskSerializer(serializers.ModelSerializerd):
     status = serializers.MultipleChoiceField()
     author = UserSerializer()
     executor = UserSerializer()
-    tag = TagSerializer(many=True, required=False)
+    tags = TagSerializer(many=True, required=False)
 
     class Meta:
         model = Task
@@ -47,7 +47,7 @@ class TaskSerializer(serializers.ModelSerializerd):
             "priority",
             "author",
             "executor",
-            "tag",
+            "tags",
         )
 
     def create(self, validated_data):
