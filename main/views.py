@@ -7,6 +7,7 @@ from .serializers import UserSerializer, TaskSerializer, TagSerializer
 
 class UserFilter(django_filters.FilterSet):
     """Filter User instances by name."""
+
     name = django_filters.CharFilter(lookup_expr="icontains")
 
     class Meta:
@@ -16,6 +17,7 @@ class UserFilter(django_filters.FilterSet):
 
 class TaskFilter(django_filters.FilterSet):
     """Filter Task instances by tags, status, author, and executor."""
+
     tags = django_filters.ModelMultipleChoiceFilter(
         field_name="tags__name",
         to_field_name="name",
@@ -36,14 +38,17 @@ class TaskFilter(django_filters.FilterSet):
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    """A viewset for CRUD operations on User instance."""
+
     queryset = User.objects.order_by("id")
     serializer_class = UserSerializer
     filterset_class = UserFilter
 
 
-class TaskViewSet:
+class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.order_by("id")
     serializer_class = TaskSerializer
+    filterset_class = TaskFilter
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -52,6 +57,6 @@ class TaskViewSet:
         serializer.save(author=self.request.user)
 
 
-class TagViewSet:
+class TagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer
