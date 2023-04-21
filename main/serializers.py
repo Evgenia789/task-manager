@@ -29,7 +29,9 @@ class TagSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     """The TaskSerializer serializer for the Task model."""
 
-    status = serializers.MultipleChoiceField()
+    status = serializers.MultipleChoiceField(
+        choices=Task.Statuses.choices, source="get_status_display"
+    )
     author = UserSerializer()
     executor = UserSerializer()
     tags = TagSerializer(many=True, required=False)
