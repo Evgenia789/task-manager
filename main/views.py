@@ -13,6 +13,12 @@ class TaskViewSet():
     queryset = Task.objects.order_by("id")
     serializer_class = TaskSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(author=self.request.user)
+
 
 class TagViewSet():
     queryset = Tag.objects.order_by("id")
