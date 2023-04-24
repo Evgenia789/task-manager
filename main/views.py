@@ -49,7 +49,11 @@ class UserViewSet(viewsets.ModelViewSet):
 class TaskViewSet(viewsets.ModelViewSet):
     """A viewset for CRUD operations on Task instance."""
 
-    queryset = Task.objects.order_by("id")
+    queryset = (
+        Task.objects.select_related("author", "executor")
+        .prefetch_related("tags")
+        .order_by("id")
+    )
     serializer_class = TaskSerializer
     filterset_class = TaskFilter
     permission_classes = (DeletePermission,)
