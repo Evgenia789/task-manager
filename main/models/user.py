@@ -30,7 +30,3 @@ class User(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=False)
     phone = models.CharField(max_length=30, null=True, blank=False)
     is_staff = models.BooleanField(default=False)
-
-    def is_staff(self):
-        "Is the user a member of staff?"
-        return self.staff
