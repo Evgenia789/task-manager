@@ -51,7 +51,7 @@ class Task(models.Model):
         related_name="executed_tasks",
         verbose_name="Executor",
     )
-    tag = models.ManyToManyField(
+    tags = models.ManyToManyField(
         Tag, blank=True, related_name="tasks", verbose_name="Tag"
     )
 
