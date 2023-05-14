@@ -2,6 +2,7 @@ import django_filters.rest_framework
 from rest_framework import viewsets
 
 from .models import User, Task, Tag
+from .permissions import DeletePermission
 from .serializers import UserSerializer, TaskSerializer, TagSerializer
 
 
@@ -55,6 +56,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     )
     serializer_class = TaskSerializer
     filterset_class = TaskFilter
+    permission_classes = (DeletePermission,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -69,3 +71,4 @@ class TagViewSet(viewsets.ModelViewSet):
 
     queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer
+    permission_classes = (DeletePermission,)
