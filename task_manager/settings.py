@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ("*",)
 # Application definition
 
 INSTALLED_APPS = [
+    "django_filters",
     "rest_framework",
     "main.apps.MainConfig",
     "django.contrib.admin",
@@ -130,3 +131,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "main.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+}
