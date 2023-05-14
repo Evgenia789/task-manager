@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 from .tag import Tag
 from .user import User
 
@@ -28,8 +30,8 @@ class Task(models.Model):
 
     name = models.CharField(max_length=200, null=True, blank=False)
     description = models.TextField(null=True, blank=False)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    updated_date = models.DateTimeField(default=timezone.now)
     deadline = models.DateTimeField(null=True, blank=False)
     status = models.CharField(
         choices=Statuses.choices, max_length=255, default=Statuses.NEW_TASK
