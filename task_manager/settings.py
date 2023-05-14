@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ("*",)
 # Application definition
 
 INSTALLED_APPS = [
+    "drf_yasg",
     "django_filters",
     "rest_framework",
     "main.apps.MainConfig",
